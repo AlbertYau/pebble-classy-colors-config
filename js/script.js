@@ -28,4 +28,9 @@ $(document).ready(function() {
 		location.href = 'pebblejs://close#' + encodeURIComponent(JSON.stringify(config));
 	});
 
+	$('#cancel').on('click', function() {
+		// Close config page and return data
+		location.href = 'pebblejs://close';
+	});
+
 });
