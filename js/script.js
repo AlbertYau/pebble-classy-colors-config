@@ -5,18 +5,21 @@ var config = {
 $(document).ready(function() {
 
 	console.log("Document Ready");
-	
-	//init
-	var bgColorPicker = $('#bgColorPicker')[0];
+
+	var bgColorPicker = $('#bgColorPicker');
 
 	// check local storage
-    if(localStorage.length !== 0) {
-      bgColorPicker.value = localStorage.getItem('bgColor');
+    if(localStorage.length > 0) {
+      console.log("Local Storage exists");
+      storedColor = localStorage.getItem('bgColor');
+      bgColorPicker.attr('value', storedColor);
+      var colorSpan = bgColorPicker.siblings().find('.value');
+      colorSpan.css('background-color', storedColor.replace(/^0x/, '#'));
     }
-
+    
 	$('#send').on('click', function() {
 		// Set options
-		config.bgColor = bgColorPicker.value;
+		config.bgColor = bgColorPicker[0].value;
 
 		// Store values
 		localStorage.setItem('bgColor', config.bgColor);
