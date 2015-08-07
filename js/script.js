@@ -6,12 +6,12 @@ $(document).ready(function() {
 
 	console.log("Document Ready");
 	
-	// Init
+	//init
 	var bgColorPicker = $('#bgColorPicker')[0];
 
-	// Check local storage
-    if(localStorage.bgColor) {
-      bgColorPicker.value = localStorage.bgColor;
+	// check local storage
+    if(localStorage.length !== 0) {
+      bgColorPicker.value = localStorage.getItem('bgColor');
     }
 
 	$('#send').on('click', function() {
@@ -19,7 +19,7 @@ $(document).ready(function() {
 		config.bgColor = bgColorPicker.value;
 
 		// Store values
-		localStorage.bgColor = config.bgColor;
+		localStorage.setItem('bgColor', config.bgColor);
 
 		// Close config page and return data
 		location.href = 'pebblejs://close#' + encodeURIComponent(JSON.stringify(config));
