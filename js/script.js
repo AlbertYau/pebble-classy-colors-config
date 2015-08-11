@@ -12,6 +12,7 @@ $(document).ready(function() {
 
 	// check local storage
     if(localStorage.length > 0) {
+	  /*
       console.log("Local Storage exists");
       var storedColor = localStorage.getItem('bgColor');
       var colorSpan = bgColorPicker.siblings().find('.value');
@@ -22,6 +23,7 @@ $(document).ready(function() {
       timeColorPicker.attr('value', storedColor);
       colorSpan = timeColorPicker.siblings().find('.value');
       colorSpan.css('background-color', storedColor.replace(/^0x/, '#'));
+      */
     }
     
     // Submit button
