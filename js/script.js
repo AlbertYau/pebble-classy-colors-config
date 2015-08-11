@@ -25,7 +25,7 @@ $(document).ready(function() {
     }
     
     // Submit button
-	$('#send').on('click tap', function() {
+	$('#send').on('click', function() {
 		// Set options
 		config.bgColor = bgColorPicker[0].value;
 		config.timeColor = timeColorPicker[0].value;
@@ -39,7 +39,7 @@ $(document).ready(function() {
 	});
 
 	// Cancel button
-	$('#cancel').on('click tap', function() {
+	$('#cancel').on('click', function() {
 		// Close config page and return data
 		location.href = 'pebblejs://close#success';
 	});
