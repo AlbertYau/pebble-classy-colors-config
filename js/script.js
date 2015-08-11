@@ -12,18 +12,23 @@ $(document).ready(function() {
 
 	// check local storage
     if(localStorage.length > 0) {
-	  /*
       console.log("Local Storage exists");
-      var storedColor = localStorage.getItem('bgColor');
-      var colorSpan = bgColorPicker.siblings().find('.value');
-      bgColorPicker.attr('value', storedColor);
-      colorSpan.css('background-color', storedColor.replace(/^0x/, '#'));
+      var storedColor, colorSpan;
 
-      storedColor = localStorage.getItem('timeColor');
-      timeColorPicker.attr('value', storedColor);
-      colorSpan = timeColorPicker.siblings().find('.value');
-      colorSpan.css('background-color', storedColor.replace(/^0x/, '#'));
-      */
+      if (localStorage.getItem('bgColor') !== null) {
+	      storedColor = localStorage.getItem('bgColor');
+	      colorSpan = bgColorPicker.siblings().find('.value');
+	      bgColorPicker.attr('value', storedColor);
+	      colorSpan.css('background-color', storedColor.replace(/^0x/, '#'));
+      }
+
+      if (localStorage.getItem('timeColor') !== null) {
+	      storedColor = localStorage.getItem('timeColor');
+	      timeColorPicker.attr('value', storedColor);
+	      colorSpan = timeColorPicker.siblings().find('.value');
+	      colorSpan.css('background-color', storedColor.replace(/^0x/, '#')); 	
+      }
+
     }
     
     // Submit button
