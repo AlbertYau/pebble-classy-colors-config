@@ -1,6 +1,6 @@
 var config = {
-	'bgColor': 0,
-	'timeColor': 0
+	'bgColor': '',
+	'timeColor': ''
 };
 
 $(document).ready(function() {
