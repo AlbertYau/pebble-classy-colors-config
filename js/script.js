@@ -35,13 +35,13 @@ $(document).ready(function() {
 		localStorage.setItem('timeColor', config.timeColor);
 
 		// Close config page and return data
-		location.href = 'pebblejs://close#' + encodeURIComponent(JSON.stringify(config));
+		window.location.href = 'pebblejs://close#' + encodeURIComponent(JSON.stringify(config));
 	});
 
 	// Cancel button
 	$('#cancel').on('click', function() {
 		// Close config page and return data
-		location.href = 'pebblejs://close#success';
+		window.location.href = 'pebblejs://close#success';
 	});
 
 });
