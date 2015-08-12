@@ -1,6 +1,7 @@
 var config = {
 	'bgColor': '',
-	'timeColor': ''
+	'timeColor': '',
+	'bluetoothIconEnabled': 1
 };
 
 $(document).ready(function() {
@@ -9,10 +10,12 @@ $(document).ready(function() {
 
 	var bgColorPicker = $('#bgColorPicker');
 	var timeColorPicker = $('#timeColorPicker');
+	var bluetoothEnabledCheckBox = $('#bluetoothEnabledCheckBox');
 
 	// check local storage
     if(localStorage.length > 0) {
       console.log("Local Storage exists");
+      
       var storedColor, colorSpan;
 
       if (localStorage.getItem('bgColor') !== null) {
@@ -21,14 +24,21 @@ $(document).ready(function() {
 	      bgColorPicker.attr('value', storedColor);
 	      colorSpan.css('background-color', storedColor.replace(/^0x/, '#'));
       }
-
       if (localStorage.getItem('timeColor') !== null) {
 	      storedColor = localStorage.getItem('timeColor');
 	      timeColorPicker.attr('value', storedColor);
 	      colorSpan = timeColorPicker.siblings().find('.value');
 	      colorSpan.css('background-color', storedColor.replace(/^0x/, '#')); 	
       }
-
+      if (localStorage.getItem('bluetoothIconEnabled') !== null) {
+		  var bluetoothIconEnabled = localStorage.getItem('bluetoothIconEnabled') != 0 ? true : false;
+	  	  if (bluetoothIconEnabled) {
+	  	  	bluetoothEnabledCheckBox.attr('checked');
+	  	  }
+	  	  else {
+	  	  	bluetoothEnabledCheckBox.attr('checked', null);
+	  	  }
+      }
     }
     
     // Submit button
@@ -36,10 +46,14 @@ $(document).ready(function() {
 		// Set options
 		config.bgColor = bgColorPicker[0].value;
 		config.timeColor = timeColorPicker[0].value;
+		config.bluetoothIconEnabled = bluetoothEnabledCheckBox[0].checked ? 1 : 0;
 
 		// Store values
 		localStorage.setItem('bgColor', config.bgColor);
 		localStorage.setItem('timeColor', config.timeColor);
+		localStorage.setItem('bluetoothIconEnabled', config.bluetoothIconEnabled);
+
+		console.log(config);
 
 		// Close config page and return data
 		document.location.href = 'pebblejs://close#' + encodeURIComponent(JSON.stringify(config));
